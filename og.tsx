@@ -20,4 +20,4 @@ async function handler(req: Request) {
   );
 }
 
-serve(handler);
+serve({ port: 8080 }, handler);
