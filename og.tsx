@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.140.0/http/server.ts";
 import React from "https://esm.sh/react@18.2.0";
 import { ImageResponse } from "https://deno.land/x/og_edge/mod.ts";
 
+// deno run --allow-net --allow-env og.tsx
 // const font = fetch("https://deno.land/x/og_edge@0.0.1/assets/TYPEWR__.TTF")
 //   .then(
 //     (res) => res.arrayBuffer(),
@@ -59,4 +60,6 @@ async function handler(req: Request) {
   );
 }
 
-serve(handler, { port: 8080 });
+const PORT = Deno.env.get("PORT");
+
+serve(handler, { port: PORT || 8080 });
