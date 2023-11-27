@@ -2,12 +2,18 @@ import { serve } from "https://deno.land/std@0.140.0/http/server.ts";
 import React from "https://esm.sh/react@18.2.0";
 import { ImageResponse } from "https://deno.land/x/og_edge/mod.ts";
 
+// const font = fetch("https://deno.land/x/og_edge@0.0.1/assets/TYPEWR__.TTF")
+//   .then(
+//     (res) => res.arrayBuffer(),
+//   );
+// Todo fonts
+// TODO caching images depending on url 
+
 async function handler(req: Request) {
   const url = new URL(req.url);
   const heading = url.searchParams.get("heading") || "Default Heading";
   const tag = url.searchParams.get("tag") || "Default Tag";
   const author = url.searchParams.get("author") || "Default Author";
-  //     backgroundImage: "url(https://i.postimg.cc/0NvHqM4m/image.png)",
 
   return new ImageResponse(
 <div
@@ -41,7 +47,15 @@ async function handler(req: Request) {
       {author}
     </div>
   </div>
-</div>
+</div>,
+  {
+    headers: {
+      'content-type': 'image/png',
+      'cache-control': 'public, max-age=31536000, no-transform, immutable',
+    },
+    width: 1200,
+    height: 630,
+  }
   );
 }
 
