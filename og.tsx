@@ -18,7 +18,7 @@ async function handler(req: Request) {
 
   return new ImageResponse(
 <div
-  tw="flex relative py-16 px-8 text-white flex-col w-full h-full items-start justify-between bg-white"
+  tw="flex relative py-16 px-14 text-white flex-col w-full h-full items-start justify-between bg-white"
 >
   <div style={{
       backgroundImage: "url(https://i.postimg.cc/nzq3SvZN/image.png)",
